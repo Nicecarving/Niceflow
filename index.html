@@ -65,16 +65,32 @@
     const typing = document.getElementById('typingIndicator');
 
     const startTime = performance.now();
-
     const params = new URLSearchParams(window.location.search);
-    const city = params.get('city') || 'Ecuador';
+
+    // Словарь для автоматической подстановки страны по коду
+    const countryNames = {
+        'EC': 'Ecuador',
+        'CR': 'Costa Rica',
+        'GT': 'Guatemala',
+        'HN': 'Honduras',
+        'DO': 'República Dominicana',
+        'PA': 'Panamá'
+    };
+
+    // Проверяем: сначала город, потом код страны, потом заглушка
+    const locationLabel = params.get('city') || countryNames[params.get('country')] || 'tu ciudad';
 
     const script = [
-        { t: `¡Hola! 👋 Te vi aquí en la app... eres de ${city}, verdad? 😊`, d: 1200 },
-        { t: "Me llamo Sofía. Recién me mudé y busco alguien interesante para charlar o conocernos mejor ❤️", d: 2200 },
-        { t: "Te parece si nos conocemos? Dime algo de ti... 😄", d: 1800 }
+        { t: `¡Hola! 👋 Te vi aquí en la app... eres de ${locationLabel}, verdad? 😊`, d: 1200 },
+        // ИСПРАВЛЕНО: "y" вместо "и"
+        { t: `Me llamo Sofía. Recién me mudé y busco alguien interesante para charlar o conocernos mejor ❤️`, d: 2200 },
+        { t: "¿Te parece si nos conocemos? Dime algo de ti... 😄", d: 1800 }
     ];
 
+    let step = 0;
+
+    // ... далее идут твои функции vibe(), addMsg(), runScript() и т.д.
+</script>
     let step = 0;
 
     function vibe() {
