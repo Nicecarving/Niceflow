@@ -60,25 +60,19 @@
 </div>
 
 <script>
-    // 1. Сначала объявляем переменные для элементов
     const chat = document.getElementById('chat');
     const inputBar = document.getElementById('inputBar');
     const typing = document.getElementById('typingIndicator');
     const startTime = performance.now();
     const params = new URLSearchParams(window.location.search);
 
-    // 2. Настройка ГЕО
     const countryNames = {
-        'EC': 'Ecuador',
-        'CR': 'Costa Rica',
-        'GT': 'Guatemala',
-        'HN': 'Honduras',
-        'DO': 'República Dominicana',
-        'PA': 'Panamá'
+        'EC': 'Ecuador', 'CR': 'Costa Rica', 'GT': 'Guatemala',
+        'HN': 'Honduras', 'DO': 'República Dominicana', 'PA': 'Panamá'
     };
+
     const locationLabel = params.get('city') || countryNames[params.get('country')] || 'tu ciudad';
 
-    // 3. Сценарий чата
     const script = [
         { t: `¡Hola! 👋 Te vi aquí en la app... eres de ${locationLabel}, verdad? 😊`, d: 1200 },
         { t: "Me llamo Sofía. Recién me mudé y busco alguien interesante para charlar o conocernos mejor ❤️", d: 2200 },
@@ -87,10 +81,7 @@
 
     let step = 0;
 
-    // 4. Функции чата
-    function vibe() {
-        if ("vibrate" in navigator) navigator.vibrate([50]);
-    }
+    function vibe() { if ("vibrate" in navigator) navigator.vibrate([50]); }
 
     function addMsg(text, isUser = false) {
         const d = new Date();
@@ -140,81 +131,3 @@
 
     function goToOffer() {
         const timeSpent = Math.floor((performance.now() - startTime) / 1000);
-        const offerLink = "https://fwziv.bemobtrk.com/click";
-        window.location.href = offerLink + window.location.search + "&s1=" + timeSpent + "&var=mobile_chat_2026";
-    }
-
-    // 5. Системные события
-    history.pushState(null, null, location.href);
-    window.onpopstate = () => goToOffer();
-    window.onload = runScript;
-
-</script>
-    let step = 0;
-
-    function vibe() {
-        if ("vibrate" in navigator) navigator.vibrate([50]);
-    }
-
-    function addMsg(text, isUser = false) {
-        const d = new Date();
-        const time = d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-        const div = document.createElement('div');
-        div.className = `msg ${isUser ? 'user' : 'bot'}`;
-        div.innerHTML = `${text} <div class="time">${time} ${isUser ? '<span class="check">✓✓</span>' : ''}</div>`;
-        chat.insertBefore(div, typing);
-        chat.scrollTop = chat.scrollHeight;
-        if(!isUser) vibe();
-    }
-
-    function runScript() {
-        if (step < script.length) {
-            typing.style.display = 'block';
-            chat.scrollTop = chat.scrollHeight;
-            setTimeout(() => {
-                typing.style.display = 'none';
-                addMsg(script[step].t);
-                step++;
-                if (step < script.length) {
-                    setTimeout(runScript, script[step].d);
-                } else {
-                    inputBar.style.display = 'flex';
-                }
-            }, 1500);
-        }
-    }
-
-    function sendMsg() {
-        const input = document.getElementById('userInput');
-        const val = input.value.trim();
-        if(val) {
-            addMsg(val, true);
-            input.value = '';
-            setTimeout(() => {
-                typing.style.display = 'block';
-                chat.scrollTop = chat.scrollHeight;
-                setTimeout(() => {
-                    typing.style.display = 'none';
-                    addMsg("¡Genial! 😍 Vamos a mi perfil para seguir sin restricciones 🔥");
-                    setTimeout(goToOffer, 2500);
-                }, 2000);
-            }, 1000);
-        }
-    }
-
-    function goToOffer() {
-        const timeSpent = Math.floor((performance.now() - startTime) / 1000);
-        const offerLink = "https://fwziv.bemobtrk.com/click";
-        const currentParams = window.location.search;
-        window.location.href = offerLink + currentParams + "&s1=" + timeSpent + "&var=mobile_chat_2026";
-    }
-
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-        goToOffer();
-    };
-
-    window.onload = runScript;
-</script>
-</body>
-</html>
