@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chat Privado - Sofía</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style> 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin:0; background:#efe7dd; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
-        .header { background: #075e54; color: white; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between; height: 60px; flex-shrink: 0; z-index: 100; }
-        .user-info { display: flex; align-items: center; }
-        .back-arrow { margin-right: 10px; font-size: 18px; }
-        .avatar { width: 42px; height: 42px; border-radius: 50%; margin-right: 10px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); }
-        .name-container { display: flex; flex-direction: column; }
-        .name { font-weight: 600; font-size: 16px; }
-        .status { font-size: 12px; color: #dcf8c6; }
-        .chat-container { flex: 1; overflow-y: auto; padding: 15px; background-color: #e5ddd5; background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); display: flex; flex-direction: column; }
-        .msg { margin-bottom: 12px; padding: 8px 12px; border-radius: 12px; max-width: 85%; font-size: 15px; position: relative; box-shadow: 0 1px 2px rgba(0,0,0,0.15); animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .bot { background: white; align-self: flex-start; border-top-left-radius: 0; color: #000; }
-        .user { background: #dcf8c6; align-self: flex-end; border-top-right-radius: 0; color: #000; }
-        .time { font-size: 10px; color: #888; text-align: right; margin-top: 4px; }
-        .check { color: #4fc3f7; margin-left: 2px; }
-        .input-bar { background: #f0f0f0; padding: 8px; display: none; align-items: center; min-height: 60px; border-top: 1px solid #ddd; }
-        .input-wrapper { background: white; flex: 1; border-radius: 25px; padding: 8px 15px; display: flex; align-items: center; }
-        input { border: none; flex: 1; outline: none; font-size: 16px; background: transparent; }
-        .send-btn { background: #075e54; color: white; width: 45px; height: 45px; border-radius: 50%; border: none; margin-left: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .typing { color: #555; font-size: 13px; margin: 5px 0 15px 0; display: none; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chat Privado - Sofía</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;background:#efe7dd;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+.header{background:#075e54;color:white;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;height:60px;cursor:pointer;}
+.user-info{display:flex;align-items:center;}
+.back-arrow{margin-right:10px;font-size:18px;}
+.avatar{width:42px;height:42px;border-radius:50%;margin-right:10px;object-fit:cover;border:1px solid rgba(255,255,255,0.2);}
+.name-container{display:flex;flex-direction:column;}
+.name{font-weight:600;font-size:16px;}
+.status{font-size:12px;color:#dcf8c6;}
+.chat-container{flex:1;overflow-y:auto;padding:15px;background-color:#e5ddd5;background-image:url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');display:flex;flex-direction:column;}
+.msg{margin-bottom:12px;padding:8px 12px;border-radius:12px;max-width:85%;font-size:15px;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.15);animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.bot{background:white;align-self:flex-start;border-top-left-radius:0;color:#000;}
+.user{background:#dcf8c6;align-self:flex-end;border-top-right-radius:0;color:#000;}
+.time{font-size:10px;color:#888;text-align:right;margin-top:4px;}
+.check{color:#4fc3f7;margin-left:2px;}
+.input-bar{background:#f0f0f0;padding:8px;display:none;align-items:center;min-height:60px;border-top:1px solid #ddd;}
+.input-wrapper{background:white;flex:1;border-radius:25px;padding:8px 15px;display:flex;align-items:center;}
+input{border:none;flex:1;outline:none;font-size:16px;background:transparent;}
+.send-btn{background:#075e54;color:white;width:45px;height:45px;border-radius:50%;border:none;margin-left:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.typing{color:#555;font-size:13px;margin:5px 0 15px 0;display:none;font-style:italic;}
+</style>
 </head>
 <body>
 
@@ -41,8 +41,8 @@
         </div>
     </div>
     <div class="header-icons">
-        <i class="fas fa-video" style="margin-right: 15px; opacity: 0.8;"></i>
-        <i class="fas fa-phone" style="opacity: 0.8;"></i>
+        <i class="fas fa-video" style="margin-right:15px;opacity:0.8;"></i>
+        <i class="fas fa-phone" style="opacity:0.8;"></i>
     </div>
 </div>
 
@@ -52,94 +52,107 @@
 
 <div class="input-bar" id="inputBar">
     <div class="input-wrapper">
-        <i class="far fa-smile" style="color: #999; margin-right: 10px;"></i>
+        <i class="far fa-smile" style="color:#999;margin-right:10px;"></i>
         <input type="text" id="userInput" placeholder="Escribe un mensaje...">
-        <i class="fas fa-paperclip" style="color: #999; margin-left: 10px;"></i>
+        <i class="fas fa-paperclip" style="color:#999;margin-left:10px;"></i>
     </div>
     <button class="send-btn" onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
 </div>
 
 <script>
-    const chat = document.getElementById('chat');
-    const inputBar = document.getElementById('inputBar');
-    const typing = document.getElementById('typingIndicator');
+const chat = document.getElementById('chat');
+const inputBar = document.getElementById('inputBar');
+const typing = document.getElementById('typingIndicator');
+const startTime = performance.now();
 
-    const startTime = performance.now();
+// получаем город из URL
+const params = new URLSearchParams(window.location.search);
+let city = params.get('city') || "";
 
-    const params = new URLSearchParams(window.location.search);
-    const city = params.get('city') || 'Ecuador';
+// если города нет, делаем запрос к GEO API
+async function detectCity() {
+    if(!city) {
+        try {
+            const res = await fetch("https://ipapi.co/json/");
+            const data = await res.json();
+            city = data.city || "";
+        } catch(e) {
+            city = ""; // если API не ответил
+        }
+    }
+    startChat();
+}
 
+function formatCityText(ct) {
+    return ct ? `... eres de ${ct},` : "..."; 
+}
+
+function startChat() {
     const script = [
-        { t: `¡Hola! 👋 Te vi aquí en la app... eres de ${city}, verdad? 😊`, d: 1200 },
+        { t: `¡Hola! 👋 Te vi aquí en la app ${formatCityText(city)} verdad? 😊`, d: 1200 },
         { t: "Me llamo Sofía. Recién me mudé y busco alguien interesante para charlar o conocernos mejor ❤️", d: 2200 },
         { t: "Te parece si nos conocemos? Dime algo de ti... 😄", d: 1800 }
     ];
 
     let step = 0;
+    function vibe(){if("vibrate" in navigator)navigator.vibrate([50]);}
 
-    function vibe() {
-        if ("vibrate" in navigator) navigator.vibrate([50]);
+    function addMsg(text,isUser=false){
+        const d=new Date();
+        const time=d.getHours()+":"+ (d.getMinutes()<10?'0':'')+d.getMinutes();
+        const div=document.createElement('div');
+        div.className=`msg ${isUser?'user':'bot'}`;
+        div.innerHTML=`${text} <div class="time">${time} ${isUser?'<span class="check">✓✓</span>':''}</div>`;
+        chat.insertBefore(div,typing);
+        chat.scrollTop=chat.scrollHeight;
+        if(!isUser)vibe();
     }
 
-    function addMsg(text, isUser = false) {
-        const d = new Date();
-        const time = d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-        const div = document.createElement('div');
-        div.className = `msg ${isUser ? 'user' : 'bot'}`;
-        div.innerHTML = `${text} <div class="time">${time} ${isUser ? '<span class="check">✓✓</span>' : ''}</div>`;
-        chat.insertBefore(div, typing);
-        chat.scrollTop = chat.scrollHeight;
-        if(!isUser) vibe();
-    }
-
-    function runScript() {
-        if (step < script.length) {
-            typing.style.display = 'block';
-            chat.scrollTop = chat.scrollHeight;
-            setTimeout(() => {
-                typing.style.display = 'none';
+    function runScript(){
+        if(step<script.length){
+            typing.style.display='block';
+            chat.scrollTop=chat.scrollHeight;
+            setTimeout(()=>{
+                typing.style.display='none';
                 addMsg(script[step].t);
                 step++;
-                if (step < script.length) {
-                    setTimeout(runScript, script[step].d);
-                } else {
-                    inputBar.style.display = 'flex';
-                }
-            }, 1500);
+                if(step<script.length)setTimeout(runScript,script[step].d);
+                else inputBar.style.display='flex';
+            },1500);
         }
     }
+    runScript();
+}
 
-    function sendMsg() {
-        const input = document.getElementById('userInput');
-        const val = input.value.trim();
-        if(val) {
-            addMsg(val, true);
-            input.value = '';
-            setTimeout(() => {
-                typing.style.display = 'block';
-                chat.scrollTop = chat.scrollHeight;
-                setTimeout(() => {
-                    typing.style.display = 'none';
-                    addMsg("¡Genial! 😍 Vamos a mi perfil para seguir sin restricciones 🔥");
-                    setTimeout(goToOffer, 2500);
-                }, 2000);
-            }, 1000);
-        }
+function sendMsg(){
+    const input=document.getElementById('userInput');
+    const val=input.value.trim();
+    if(val){
+        addMsg(val,true);
+        input.value='';
+        setTimeout(()=>{
+            typing.style.display='block';
+            setTimeout(()=>{
+                typing.style.display='none';
+                addMsg("¡Genial! 😍 Vamos a mi perfil para seguir sin restricciones 🔥");
+                setTimeout(goToOffer,2500);
+            },2000);
+        },1000);
     }
+}
 
-    function goToOffer() {
-        const timeSpent = Math.floor((performance.now() - startTime) / 1000);
-        const offerLink = "https://fwziv.bemobtrk.com/click";
-        const currentParams = window.location.search;
-        window.location.href = offerLink + currentParams + "&s1=" + timeSpent + "&var=mobile_chat_2026";
-    }
+function goToOffer(){
+    const timeSpent=Math.floor((performance.now()-startTime)/1000);
+    const offerLink="https://fwziv.bemobtrk.com/click";
+    const currentParams=window.location.search;
+    window.location.href=offerLink + currentParams + "&s1=" + timeSpent + "&var=mobile_chat_2026";
+}
 
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-        goToOffer();
-    };
+history.pushState(null,null,location.href);
+window.onpopstate = ()=>{ goToOffer(); };
 
-    window.onload = runScript;
+// стартуем
+detectCity();
 </script>
 </body>
 </html>
