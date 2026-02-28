@@ -1,114 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Encuentros Privados</title>
-    <style>
-        :root { --pink: #e84393; --green: #2ecc71; --bg: #1a1a1a; --card: #222; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        #app { width: 100%; max-width: 450px; background: var(--card); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 28px 20px; text-align: center; }
+    <title>Procurando garotas?</title>
+    <meta name="viewport" content="user-scalable=false, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <meta name="theme-color" content="#000000">
 
-        .avatar-wrap { position: relative; display: inline-block; margin-bottom: 16px; }
-        .avatar-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--pink); display: block; }
-        .online-badge { position: absolute; bottom: 4px; right: 4px; background: var(--green); color: #000; font-size: 10px; font-weight: bold; padding: 2px 7px; border-radius: 20px; border: 2px solid var(--card); white-space: nowrap; }
-
-        .message-preview { background: #2a2a2a; border-left: 3px solid var(--pink); border-radius: 8px; padding: 10px 14px; margin: 12px 0 20px; text-align: left; font-size: 14px; color: #ccc; }
-        .message-preview strong { color: white; display: block; margin-bottom: 4px; font-size: 15px; }
-
-        h1 { font-size: 21px; margin-bottom: 8px; line-height: 1.3; }
-        p { font-size: 15px; color: #bbb; margin: 6px 0; }
-
-        .social-proof { background: #2a2a2a; border-radius: 10px; padding: 10px 14px; margin: 14px 0; display: flex; align-items: center; gap: 10px; text-align: left; }
-        .social-proof .avatars { display: flex; }
-        .social-proof .avatars span { font-size: 22px; margin-right: -6px; }
-        .social-proof p { font-size: 13px; color: #aaa; margin: 0; }
-        .social-proof strong { color: white; }
-
-        .btn { display: block; width: 100%; background: var(--pink); color: white; border: none; padding: 17px; margin: 14px 0 6px; border-radius: 50px; font-weight: bold; font-size: 17px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 20px rgba(232,67,147,0.3); transition: transform 0.1s; }
-        .btn:active { transform: scale(0.97); }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-<div id="app">
+    <div class="layout">
+        <div class="back" id="back">←</div>
 
-    <div class="avatar-wrap">
-        <img class="avatar-img" src="https://i.imgur.com/rwrGcVF.jpg" alt="">
-        <div class="online-badge">● en línea</div>
+        <div class="video-bg">
+            <!--
+                Видео не сохраняется через webarchive.
+                Вариант 1: скачай видео отдельно, положи в assets/video.mp4
+                Вариант 2: укажи прямую ссылку на видео ниже
+            -->
+            <video class="video video--blur video--blur1"
+                src="https://discovery-passion.com/adult/lands/big-ass/assets/bigass.mp4"
+                loop playsinline autoplay muted></video>
+            <video class="video video--blur video--blur2"
+                src="https://discovery-passion.com/adult/lands/big-ass/assets/bigass.mp4"
+                loop playsinline autoplay muted></video>
+            <video class="video video--mob"
+               src="https://discovery-passion.com/adult/lands/big-ass/assets/bigass.mp4"
+                loop playsinline autoplay muted></video>
+        </div>
+
+        <div class="main">
+            <div class="wrap">
+
+                <!-- Шаг 1: возраст -->
+                <div class="step step-1 step-active">
+                    <div class="card">
+                        <h2 class="card__title">Você tem pelo menos 18 anos?</h2>
+                    </div>
+                    <div class="btn-wrap">
+                        <a class="btn js-next" href="javascript:void(0);">Não</a>
+                        <a class="btn btn--primary js-next" href="javascript:void(0);">Sim</a>
+                    </div>
+                </div>
+
+                <!-- Шаг 2: правила -->
+                <div class="card step step-2">
+                    <h2 class="card__title">Você deve seguir as regras abaixo:</h2>
+                    <ul>
+                        <li>Se você ver alguém que conhece, NÃO publique. Não espalhe rumores.</li>
+                        <li>Ao se relacionar com um dos usuários, você é obrigado a se proteger contra DSTs.</li>
+                        <li>Respeite os desejos sexuais de outros usuários. Nossos usuários são homens e mulheres comuns, não estrelas pornô.</li>
+                    </ul>
+                    <div class="btn-wrap">
+                        <!--
+                            Замени ВАШ_ПАРТНЕРСКИЙ_ЛИНК на свою ссылку
+                        -->
+                        <a class="btn btn-fin btn--primary"
+                           href="javascript:void(0);"
+                           data-href="https://fwziv.bemobtrk.com/click">
+                            Continuar
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <div class="message-preview">
-        <strong>💬 Sofía, 34 — <span class="city">tu ciudad</span></strong>
-        "Hola... te vi en la app. ¿Tienes tiempo para chatear? 😊"
-    </div>
+    <!-- jQuery -->
+    <script src="assets/jquery.min.js"></script>
+    <!-- Логика шагов -->
+    <script src="assets/main.js"></script>
+    <script>
+        // Ссылка для back button (отдельный оффер)
+        var BACK_OFFER_URL = 'https://tone.affomelody.com/eoUcFK';
+    </script>
 
-    <h1>Te escribió una chica cerca de <span class="city">ti</span></h1>
-    <p>El acceso es solo para mayores de 18 años.</p>
-
-    <div class="social-proof">
-        <div class="avatars"><span>👩</span><span>👩</span><span>👩</span></div>
-        <p><strong id="user-count">8,420</strong> usuarios activos hoy en tu país</p>
-    </div>
-
-    <a href="#" class="btn" onclick="goToOffer(); return false;">VER MENSAJE AHORA →</a>
-    <p style="font-size:12px; color:#666;">Registro gratuito · Sin tarjeta de crédito</p>
-
-</div>
-
-<script>
-const mainOfferBase = "https://fwziv.bemobtrk.com/click";
-const backOfferBase = "https://tone.affomelody.com/eoUcFK";
-
-const urlParams = new URLSearchParams(window.location.search);
-const clickId = urlParams.get('visitor_id') || urlParams.get('click_id') || '';
-
-const mainOffer = mainOfferBase + (clickId ? '&click_id=' + clickId : '');
-const backOffer = backOfferBase + (clickId ? '&click_id=' + clickId : '');
-
-const startTime = Date.now();
-function getTimeOnPage() {
-    return Math.round((Date.now() - startTime) / 1000);
-}
-
-function goToOffer() {
-    const t = getTimeOnPage();
-    const sep = mainOffer.includes('?') ? '&' : '?';
-    window.location.href = mainOffer + sep + 's1=' + t;
-}
-
-const cityData = {
-    EC: { cities: ["Quito","Guayaquil","Cuenca","Ambato","Machala"], count: "9,840" },
-    GT: { cities: ["Ciudad de Guatemala","Quetzaltenango","Mixco","Villa Nueva"], count: "11,230" },
-    HN: { cities: ["Tegucigalpa","San Pedro Sula","La Ceiba","Choloma"], count: "8,760" },
-    DO: { cities: ["Santo Domingo","Santiago","La Romana","San Pedro de Macorís"], count: "12,100" },
-    CR: { cities: ["San José","Alajuela","Cartago","Heredia","Liberia"], count: "7,430" },
-    PA: { cities: ["Ciudad de Panamá","Colón","David","La Chorrera"], count: "6,980" },
-};
-
-function setGeo(countryCode) {
-    const geo = cityData[countryCode] || { cities: ["tu ciudad"], count: "8,420" };
-    const city = geo.cities[Math.floor(Math.random() * geo.cities.length)];
-    document.querySelectorAll('.city').forEach(el => el.innerText = city);
-    const countEl = document.getElementById('user-count');
-    if (countEl) countEl.innerText = geo.count;
-}
-
-fetch('https://ip-api.com/json/?fields=countryCode')
-    .then(r => r.json())
-    .then(data => setGeo(data.countryCode))
-    .catch(() => setGeo('EC'));
-
-(function(w, l) {
-    history.replaceState(null, document.title, l.pathname + "#!/stealth");
-    history.pushState(null, document.title, l.pathname);
-    w.addEventListener("popstate", function() {
-        if (l.hash === "#!/stealth") {
-            history.replaceState(null, document.title, l.pathname);
-            setTimeout(() => l.replace(backOffer), 0);
-        }
-    }, false);
-}(window, location));
-</script>
 </body>
 </html>
