@@ -1,32 +1,26 @@
 $(document).ready(function () {
 
+    // Берём ссылки из переменных объявленных в index.html ДО этого скрипта
+    var offerUrl = (typeof MAIN_OFFER_URL !== 'undefined') ? MAIN_OFFER_URL : $('.btn-fin').data('href');
+    var backUrl  = (typeof BACK_OFFER_URL  !== 'undefined') ? BACK_OFFER_URL  : offerUrl;
+
     // ============================================================
     // BACK BUTTON TRAP
-    // Когда юзер жмёт "назад" в браузере — редиректим на оффер
     // ============================================================
-    var offerUrl = $('.btn-fin').data('href');
-
-    // Дублируем текущую запись в истории — чтобы было куда "возвращаться"
     history.pushState(null, null, window.location.href);
     history.pushState(null, null, window.location.href);
 
     window.onpopstate = function () {
-        // Юзер нажал "назад" — отправляем на оффер
-        if (offerUrl && offerUrl !== 'ВАШ_ПАРТНЕРСКИЙ_ЛИНК') {
-            window.location.replace(offerUrl);
+        if (backUrl) {
+            window.location.replace(backUrl);
         } else {
-            // Если ссылка не вставлена — просто держим на странице
             history.pushState(null, null, window.location.href);
         }
     };
 
-    // ============================================================
-    // Кнопка ← на странице (визуальная) — тоже на оффер
-    // ============================================================
+    // Кнопка ← на странице — back оффер
     $('#back').on('click', function () {
-        if (offerUrl && offerUrl !== 'ВАШ_ПАРТНЕРСКИЙ_ЛИНК') {
-            window.location.href = offerUrl;
-        }
+        if (backUrl) window.location.href = backUrl;
     });
 
     // ============================================================
@@ -38,12 +32,10 @@ $(document).ready(function () {
     });
 
     // ============================================================
-    // Кнопка "Continuar" — редирект на оффер
+    // Кнопка "Continuar" — основной оффер
     // ============================================================
     $('.btn-fin').one('click', function () {
-        if (offerUrl) {
-            window.location.href = offerUrl;
-        }
+        if (offerUrl) window.location.href = offerUrl;
     });
 
 });
