@@ -143,7 +143,7 @@ function goToOffer(){
     const timeSpent=Math.floor((performance.now()-startTime)/1000);
     const randomId=Math.floor(Math.random()*999999);
     const offerLink="https://fwziv.bemobtrk.com/click";
-    const geoParams=`&country=${chatCountry}${chatCity?`&city=${chatCity}`:""}`;
+    const geoParams=`?country=${chatCountry}${chatCity?`&city=${chatCity}`:""}`;
     window.location.href=offerLink + geoParams + "&s1=" + timeSpent + "&rnd=" + randomId + "&var=ec_cpa_v1";
 }
 
