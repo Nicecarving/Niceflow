@@ -1,83 +1,177 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Procurando garotas?</title>
-    <meta name="viewport" content="user-scalable=false, initial-scale=1.0, maximum-scale=1.0, width=device-width">
-    <meta name="theme-color" content="#000000">
-
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chat Privado - Sofía</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;background:#efe7dd;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+.header{background:#075e54;color:white;padding:10px 15px;display:flex;align-items:center;height:60px;}
+.header button{margin-right:10px;font-size:18px;background:none;border:none;color:white;cursor:pointer;}
+.user-info{display:flex;align-items:center;}
+.avatar{width:42px;height:42px;border-radius:50%;margin-right:10px;object-fit:cover;border:1px solid rgba(255,255,255,0.2);}
+.name{font-weight:600;font-size:16px;}
+.status{font-size:12px;color:#dcf8c6;}
+.chat-container{flex:1;overflow-y:auto;padding:15px;background-color:#e5ddd5;background-image:url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');display:flex;flex-direction:column;}
+.msg{margin-bottom:12px;padding:8px 12px;border-radius:12px;max-width:85%;font-size:15px;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.15);animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.bot{background:white;align-self:flex-start;border-top-left-radius:0;color:#000;}
+.user{background:#dcf8c6;align-self:flex-end;border-top-right-radius:0;color:#000;}
+.time{font-size:10px;color:#888;text-align:right;margin-top:4px;}
+.check{color:#4fc3f7;margin-left:2px;}
+.input-bar{background:#f0f0f0;padding:8px;display:flex;align-items:center;min-height:60px;border-top:1px solid #ddd;}
+.input-wrapper{background:white;flex:1;border-radius:25px;padding:8px 15px;display:flex;align-items:center;}
+input{border:none;flex:1;outline:none;font-size:16px;background:transparent;}
+.send-btn{background:#075e54;color:white;width:45px;height:45px;border-radius:50%;border:none;margin-left:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.typing{color:#555;font-size:13px;margin:5px 0 15px 0;display:none;font-style:italic;}
+.locked-photo{position:relative;width:65%;max-width:240px;border-radius:12px;overflow:hidden;margin:10px 0;cursor:pointer;align-self:flex-start;}
+.locked-photo img{width:100%;display:block;filter:blur(12px);transform:scale(1.05);}
+.locked-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;text-align:center;}
+.locked-overlay span{font-size:12px;margin-top:6px;font-weight:400;}
+.age-gate{position:absolute;top:0;left:0;width:100%;height:100%;background:#efe7dd;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;}
+.age-gate button{margin-top:15px;background:#075e54;color:white;padding:10px 20px;border:none;border-radius:25px;font-size:16px;}
+</style>
 </head>
 <body>
-    <div class="layout">
-        <div class="back" id="back">←</div>
 
-        <div class="video-bg">
-            <!--
-                Видео не сохраняется через webarchive.
-                Вариант 1: скачай видео отдельно, положи в assets/video.mp4
-                Вариант 2: укажи прямую ссылку на видео ниже
-            -->
-            <video class="video video--blur video--blur1"
-                src="https://discovery-passion.com/adult/lands/big-ass/assets/bigass.mp4"
-                loop playsinline autoplay muted></video>
-            <video class="video video--blur video--blur2"
-                src="https://discovery-passion.com/adult/lands/big-ass/assets/bigass.mp4"
-                loop playsinline autoplay muted></video>
-            <video class="video video--mob"
-               src="https://discovery-passion.com/adult/lands/big-ass/assets/bigass.mp4"
-                loop playsinline autoplay muted></video>
-        </div>
-
-        <div class="main">
-            <div class="wrap">
-
-                <!-- Шаг 1: возраст -->
-                <div class="step step-1 step-active">
-                    <div class="card">
-                        <h2 class="card__title">Você tem pelo menos 18 anos?</h2>
-                    </div>
-                    <div class="btn-wrap">
-                        <a class="btn js-next" href="javascript:void(0);">Não</a>
-                        <a class="btn btn--primary js-next" href="javascript:void(0);">Sim</a>
-                    </div>
-                </div>
-
-                <!-- Шаг 2: правила -->
-                <div class="card step step-2">
-                    <h2 class="card__title">Você deve seguir as regras abaixo:</h2>
-                    <ul>
-                        <li>Se você ver alguém que conhece, NÃO publique. Não espalhe rumores.</li>
-                        <li>Ao se relacionar com um dos usuários, você é obrigado a se proteger contra DSTs.</li>
-                        <li>Respeite os desejos sexuais de outros usuários. Nossos usuários são homens e mulheres comuns, não estrelas pornô.</li>
-                    </ul>
-                    <div class="btn-wrap">
-                        <!--
-                            Замени ВАШ_ПАРТНЕРСКИЙ_ЛИНК на свою ссылку
-                        -->
-                        <a class="btn btn-fin btn--primary"
-                           href="javascript:void(0);"
-                           data-href="https://fwziv.bemobtrk.com/click">
-                            Continuar
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+<div class="header">
+    <button onclick="history.back()">←</button>
+    <div class="user-info">
+        <img src="https://i.imgur.com/rwrGcVF.jpg" class="avatar">
+        <div>
+            <div class="name">Sofía ✨</div>
+            <div class="status">en línea ahora</div>
         </div>
     </div>
+</div>
 
-    <!-- Ссылки офферов — вставь свои ПЕРЕД main.js -->
-    <script>
-        var MAIN_OFFER_URL = 'https://fwziv.bemobtrk.com/click';  // кнопка Continuar
-        var BACK_OFFER_URL = 'https://go.cm-trk6.com/aff_c?offer_id=10000&aff_id=70978&aff_sub5=push&click_id={clickid}';       // back button
-    </script>
+<div class="chat-container" id="chat">
+    <div class="typing" id="typingIndicator">Sofía está escribiendo...</div>
+</div>
 
-    <!-- jQuery -->
-    <script src="assets/jquery.min.js"></script>
-    <!-- Логика шагов -->
-    <script src="assets/main.js"></script>
+<div class="input-bar">
+    <div class="input-wrapper">
+        <input type="text" id="userInput" placeholder="Escribe un mensaje..." onkeypress="if(event.key==='Enter'){sendMsg();}">
+    </div>
+    <button class="send-btn" onclick="sendMsg()">
+        <i class="fas fa-paper-plane"></i>
+    </button>
+</div>
+
+<div id="ageGate" class="age-gate">
+    <strong>Solo adultos serios ✨</strong><br>
+    ¿Quieres conocer chicas con las mismas experiencias de vida que tú?<br>
+    <button onclick="startChatGate()">Continuar</button>
+</div>
+
+<script>
+let chatCity="", chatCountry="";
+const sofiaAge=32;
+const startTime=performance.now();
+const chat=document.getElementById('chat');
+const typing=document.getElementById('typingIndicator');
+
+function randomDelay(min,max){return Math.floor(Math.random()*(max-min)+min);}
+
+function addMsg(text,isUser=false){
+    const d=new Date();
+    const time=d.getHours()+":"+(d.getMinutes()<10?'0':'')+d.getMinutes();
+    const div=document.createElement('div');
+    div.className=`msg ${isUser?'user':'bot'}`;
+    div.innerHTML=`${text}<div class="time">${time} ${isUser?'<span class="check">✓✓</span>':''}</div>`;
+    chat.insertBefore(div,typing);
+    chat.scrollTop=chat.scrollHeight;
+}
+
+function botTyping(callback){
+    typing.style.display='block';
+    setTimeout(()=>{typing.style.display='none';callback();},randomDelay(1200,2000));
+}
+
+function addLockedPhoto(){
+    const photos=["https://i.imgur.com/rwrGcVF.jpg","https://i.imgur.com/ABC123.jpg","https://i.imgur.com/DEF456.jpg"];
+    const src=photos[Math.floor(Math.random()*photos.length)];
+    const wrapper=document.createElement('div');
+    wrapper.className='locked-photo';
+    wrapper.onclick=goToOffer;
+    wrapper.innerHTML=`<img src="${src}"><div class="locked-overlay">🔒 Perfil privado<span>Ver fotos completas</span></div>`;
+    chat.insertBefore(wrapper,typing);
+    chat.scrollTop=chat.scrollHeight;
+}
+
+function locationText(){
+    if(chatCity && chatCountry) return `${chatCity}, ${chatCountry}`;
+    if(chatCity) return chatCity;
+    if(chatCountry) return chatCountry;
+    return "tu área";
+}
+
+function startChat(){
+    document.getElementById('ageGate').style.display='none';
+    const script=[
+        `Hola 👋 vi tu perfil... eres ${locationText()} verdad?`,
+        `Me llamo Sofía, tengo ${sofiaAge} años. No suelo escribir primero pero algo me dio curiosidad 😊`,
+        `Tengo algunas fotos privadas aquí pero no puedo mostrarlas en abierto...`,
+        `Si quieres ver más y seguir hablando conmigo sin límites...`
+    ];
+    let i=0;
+    function next(){
+        if(i<script.length){
+            botTyping(()=>{
+                addMsg(script[i]);
+                if(i===2)setTimeout(addLockedPhoto,800);
+                i++;
+                setTimeout(next,randomDelay(900,1600));
+            });
+        }
+    }
+    next();
+}
+
+// Любой ввод сразу ведет на оффер
+function sendMsg(){
+    const input=document.getElementById('userInput');
+    const val=input.value.trim();
+    if(!val) return;
+    addMsg(val,true);
+    goToOffer();
+}
+
+function goToOffer(){
+    const timeSpent=Math.floor((performance.now()-startTime)/1000);
+    const randomId=Math.floor(Math.random()*999999);
+    const offerLink="https://fwziv.bemobtrk.com/click";
+    const geoParams=`&country=${chatCountry}${chatCity?`&city=${chatCity}`:""}`;
+    window.location.href=offerLink + geoParams + "&s1=" + timeSpent + "&rnd=" + randomId + "&var=ec_cpa_v1";
+}
+
+function startChatGate(){
+    startChat();
+}
+
+// Инициализация GEO
+function initGeoAndChat(){
+    const params=new URLSearchParams(window.location.search);
+    chatCity=params.get('city')||"";
+    chatCountry=params.get('country')||"";
+    if(chatCountry){
+        startChatGate();
+    }else{
+        fetch('https://ipapi.co/json/')
+        .then(res=>res.json())
+        .then(data=>{
+            chatCountry=data.country_name||"Ecuador";
+            chatCity=data.city||"";
+        })
+        .catch(()=>{chatCountry="Ecuador";chatCity="";})
+        .finally(()=>startChatGate());
+    }
+}
+
+window.onload=()=>{document.getElementById('userInput').focus(); initGeoAndChat();}
+</script>
 
 </body>
 </html>
