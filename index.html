@@ -6,48 +6,83 @@
 <title>Chat Privado - Sofía</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;background:#efe7dd;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
-.header{background:#075e54;color:white;padding:10px 15px;display:flex;align-items:center;height:60px;}
-.header button{margin-right:10px;font-size:18px;background:none;border:none;color:white;cursor:pointer;}
-.user-info{display:flex;align-items:center;}
-.avatar{width:42px;height:42px;border-radius:50%;margin-right:10px;object-fit:cover;border:1px solid rgba(255,255,255,0.2);}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+
+.chat-bg{
+    position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;
+    background-color:#e0d5c9;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cdefs%3E%3Cstyle%3E path%2C circle%2C rect%2C polygon%2C ellipse %7B fill%3Anone%3B stroke%3A%23c8bdb0%3B stroke-width%3A1.4%3B stroke-linecap%3Around%3B stroke-linejoin%3Around%3B %7D %3C%2Fstyle%3E%3C%2Fdefs%3E%3C!-- ROW 1 --%3E%3Cpath d='M22 18 C22 14 16 14 16 18 C16 22 22 27 22 27 C22 27 28 22 28 18 C28 14 22 14 22 18Z'/%3E%3Crect x='70' y='10' width='12' height='20' rx='2'/%3E%3Ccircle cx='76' cy='28' r='1.2' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='130' cy='20' r='10'/%3E%3Ccircle cx='127' cy='17' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='133' cy='17' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Cpath d='M127 23 Q130 26.5 133 23'/%3E%3Ccircle cx='185' cy='20' r='3.5'/%3E%3Ccircle cx='185' cy='11' r='3'/%3E%3Ccircle cx='185' cy='29' r='3'/%3E%3Ccircle cx='176' cy='20' r='3'/%3E%3Ccircle cx='194' cy='20' r='3'/%3E%3Ccircle cx='179' cy='14' r='3'/%3E%3Ccircle cx='191' cy='14' r='3'/%3E%3Ccircle cx='179' cy='26' r='3'/%3E%3Ccircle cx='191' cy='26' r='3'/%3E%3Ccircle cx='240' cy='13' r='5'/%3E%3Cpath d='M230 30 C230 22 250 22 250 30'/%3E%3Cpolygon points='290,10 293,19 302,19 295,24 298,33 290,28 282,33 285,24 278,19 287,19'/%3E%3C!-- ROW 2 --%3E%3Crect x='10' y='55' width='28' height='18' rx='5'/%3E%3Cpath d='M14 73 L12 80 L20 73'/%3E%3Cline x1='15' y1='61' x2='32' y2='61' stroke='%23c8bdb0' stroke-width='1.2'/%3E%3Cline x1='15' y1='66' x2='29' y2='66' stroke='%23c8bdb0' stroke-width='1.2'/%3E%3Cpath d='M72 80 L72 65 C72 65 76 60 78 55 C80 52 84 54 83 58 L82 62 L88 62 C90 62 91 64 90 66 C92 66 92 69 90 69 C91 71 90 73 88 73 L80 73 L72 80Z'/%3E%3Cpath d='M125 55 L140 52 L140 62 L125 65Z'/%3E%3Ccircle cx='125' cy='68' r='4'/%3E%3Ccircle cx='140' cy='65' r='4'/%3E%3Crect x='178' y='62' width='14' height='12' rx='2'/%3E%3Cpath d='M181 62 C181 56 191 56 191 62'/%3E%3Ccircle cx='185' cy='68' r='2' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='232' cy='57' r='4'/%3E%3Ccircle cx='242' cy='57' r='4'/%3E%3Cpath d='M224 75 C224 68 240 68 240 75'/%3E%3Cpath d='M234 75 C234 68 250 68 250 75'/%3E%3Cpath d='M290 55 C286 55 283 58 283 62 L283 70 L297 70 L297 62 C297 58 294 55 290 55Z'/%3E%3Cpath d='M287 70 C287 72 293 72 293 70'/%3E%3Cline x1='290' y1='53' x2='290' y2='55' stroke='%23c8bdb0' stroke-width='1.5'/%3E%3C!-- ROW 3 --%3E%3Cpath d='M22 112 C22 108 16 108 16 112 C16 116 22 121 22 121 C22 121 28 116 28 112 C28 108 22 108 22 112Z'/%3E%3Crect x='66' y='108' width='22' height='16' rx='3'/%3E%3Ccircle cx='77' cy='116' r='4'/%3E%3Cpath d='M73 108 L75 104 L79 104 L81 108'/%3E%3Ccircle cx='130' cy='116' r='10'/%3E%3Ccircle cx='127' cy='113' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Cline x1='131' y1='112' x2='135' y2='114' stroke='%23c8bdb0' stroke-width='1.4'/%3E%3Cpath d='M127 119 Q130 122 133 119'/%3E%3Ccircle cx='185' cy='116' r='3.5'/%3E%3Ccircle cx='185' cy='107' r='3'/%3E%3Ccircle cx='185' cy='125' r='3'/%3E%3Ccircle cx='176' cy='116' r='3'/%3E%3Ccircle cx='194' cy='116' r='3'/%3E%3Ccircle cx='179' cy='110' r='3'/%3E%3Ccircle cx='191' cy='110' r='3'/%3E%3Cpolygon points='240,105 250,116 240,127 230,116'/%3E%3Cline x1='230' y1='116' x2='250' y2='116' stroke='%23c8bdb0' stroke-width='1'/%3E%3Crect x='281' y='112' width='18' height='14' rx='1'/%3E%3Cline x1='281' y1='116' x2='299' y2='116' stroke='%23c8bdb0' stroke-width='1.2'/%3E%3Cline x1='290' y1='112' x2='290' y2='126' stroke='%23c8bdb0' stroke-width='1.2'/%3E%3Cpath d='M287 112 C287 108 290 108 290 112'/%3E%3Cpath d='M293 112 C293 108 290 108 290 112'/%3E%3C!-- ROW 4 --%3E%3Crect x='10' y='150' width='28' height='18' rx='5'/%3E%3Cpath d='M14 168 L12 175 L20 168'/%3E%3Crect x='70' y='148' width='12' height='20' rx='2'/%3E%3Ccircle cx='76' cy='166' r='1.2' style='fill:%23c8bdb0;stroke:none'/%3E%3Cpolygon points='130,148 133,157 142,157 135,162 138,171 130,166 122,171 125,162 118,157 127,157'/%3E%3Ccircle cx='185' cy='152' r='5'/%3E%3Cpath d='M175 168 C175 160 195 160 195 168'/%3E%3Cpath d='M232 150 L247 147 L247 157 L232 160Z'/%3E%3Ccircle cx='232' cy='163' r='4'/%3E%3Ccircle cx='247' cy='160' r='4'/%3E%3Cpath d='M290 155 C290 151 284 151 284 155 C284 159 290 164 290 164 C290 164 296 159 296 155 C296 151 290 151 290 155Z'/%3E%3C!-- ROW 5 --%3E%3Crect x='12' y='198' width='14' height='12' rx='2'/%3E%3Cpath d='M15 198 C15 192 25 192 25 198'/%3E%3Ccircle cx='19' cy='204' r='2' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='77' cy='204' r='10'/%3E%3Ccircle cx='74' cy='201' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='80' cy='201' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Cpath d='M74 207 Q77 210.5 80 207'/%3E%3Cpath d='M130 193 C126 193 123 196 123 200 L123 208 L137 208 L137 200 C137 196 134 193 130 193Z'/%3E%3Cpath d='M127 208 C127 210 133 210 133 208'/%3E%3Cpath d='M182 218 L182 203 C182 203 186 198 188 193 C190 190 194 192 193 196 L192 200 L198 200 C200 200 201 202 200 204 C202 204 202 207 200 207 C201 209 200 211 198 211 L190 211 L182 218Z'/%3E%3Ccircle cx='242' cy='194' r='4'/%3E%3Ccircle cx='252' cy='194' r='4'/%3E%3Cpath d='M234 212 C234 205 250 205 250 212'/%3E%3Cpath d='M244 212 C244 205 260 205 260 212'/%3E%3Crect x='281' y='196' width='22' height='16' rx='3'/%3E%3Ccircle cx='292' cy='204' r='4'/%3E%3Cpath d='M288 196 L290 192 L294 192 L296 196'/%3E%3C!-- ROW 6 --%3E%3Cpolygon points='22,240 25,249 34,249 27,254 30,263 22,258 14,263 17,254 10,249 19,249'/%3E%3Cpath d='M77 248 C77 244 71 244 71 248 C71 252 77 257 77 257 C77 257 83 252 83 248 C83 244 77 244 77 248Z'/%3E%3Ccircle cx='130' cy='252' r='3.5'/%3E%3Ccircle cx='130' cy='243' r='3'/%3E%3Ccircle cx='130' cy='261' r='3'/%3E%3Ccircle cx='121' cy='252' r='3'/%3E%3Ccircle cx='139' cy='252' r='3'/%3E%3Crect x='176' y='244' width='18' height='14' rx='1'/%3E%3Cline x1='176' y1='248' x2='194' y2='248' stroke='%23c8bdb0' stroke-width='1.2'/%3E%3Cline x1='185' y1='244' x2='185' y2='258' stroke='%23c8bdb0' stroke-width='1.2'/%3E%3Cpath d='M182 244 C182 240 185 240 185 244'/%3E%3Cpath d='M188 244 C188 240 185 240 185 244'/%3E%3Cpolygon points='240,241 250,252 240,263 230,252'/%3E%3Ccircle cx='290' cy='252' r='10'/%3E%3Ccircle cx='287' cy='249' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='293' cy='249' r='1.3' style='fill:%23c8bdb0;stroke:none'/%3E%3Cpath d='M287 255 Q290 258.5 293 255'/%3E%3C!-- ROW 7 --%3E%3Crect x='10' y='285' width='28' height='18' rx='5'/%3E%3Cpath d='M14 303 L12 310 L20 303'/%3E%3Crect x='70' y='283' width='12' height='20' rx='2'/%3E%3Ccircle cx='76' cy='301' r='1.2' style='fill:%23c8bdb0;stroke:none'/%3E%3Ccircle cx='130' cy='287' r='5'/%3E%3Cpath d='M120 305 C120 297 140 297 140 305'/%3E%3Cpath d='M178 283 L193 280 L193 290 L178 293Z'/%3E%3Ccircle cx='178' cy='296' r='4'/%3E%3Ccircle cx='193' cy='293' r='4'/%3E%3Cpath d='M240 281 C236 281 233 284 233 288 L233 296 L247 296 L247 288 C247 284 244 281 240 281Z'/%3E%3Cpath d='M237 296 C237 298 243 298 243 296'/%3E%3Cpolygon points='290,281 293,290 302,290 295,295 298,304 290,299 282,304 285,295 278,290 287,290'/%3E%3C/svg%3E");
+    background-size:320px 320px;
+}
+
+.header{background:#075e54;color:white;padding:10px 15px;display:flex;align-items:center;height:60px;position:relative;z-index:10;box-shadow:0 2px 5px rgba(0,0,0,0.3);}
+.header-back{font-size:22px;background:none;border:none;color:white;cursor:pointer;padding:0;margin-right:8px;}
+.user-info{display:flex;align-items:center;flex:1;}
+.avatar{width:42px;height:42px;border-radius:50%;margin-right:10px;object-fit:cover;cursor:pointer;}
 .name{font-weight:600;font-size:16px;}
 .status{font-size:12px;color:#dcf8c6;}
-.chat-container{flex:1;overflow-y:auto;padding:15px;background-color:#e5ddd5;display:flex;flex-direction:column;}
+
+/* Таймер онлайна */
+.online-timer{font-size:11px;color:#a8d5a2;margin-top:1px;}
+
+.chat-container{flex:1;overflow-y:auto;padding:15px;display:flex;flex-direction:column;position:relative;z-index:1;}
+
 .msg{margin-bottom:12px;padding:8px 12px;border-radius:12px;max-width:85%;font-size:15px;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.15);animation:fadeIn 0.3s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .bot{background:white;align-self:flex-start;border-top-left-radius:0;color:#000;}
 .user{background:#dcf8c6;align-self:flex-end;border-top-right-radius:0;color:#000;}
 .time{font-size:10px;color:#888;text-align:right;margin-top:4px;}
-.check{color:#4fc3f7;margin-left:2px;}
-.input-bar{background:#f0f0f0;padding:8px;display:flex;align-items:center;min-height:60px;border-top:1px solid #ddd;}
-.input-wrapper{background:white;flex:1;border-radius:25px;padding:8px 15px;display:flex;align-items:center;}
+.check{color:#4fc3f7;}
+
+.typing-bubble{background:white;align-self:flex-start;border-top-left-radius:0;border-radius:12px;padding:10px 16px;margin-bottom:10px;display:none;box-shadow:0 1px 2px rgba(0,0,0,0.15);}
+.typing-dots{display:flex;gap:4px;align-items:center;}
+.typing-dots span{width:8px;height:8px;background:#aaa;border-radius:50%;animation:bounce 1.2s infinite;}
+.typing-dots span:nth-child(2){animation-delay:0.2s;}
+.typing-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+
+.locked-photo{position:relative;width:65%;max-width:230px;border-radius:12px;overflow:hidden;margin:8px 0;cursor:pointer;align-self:flex-start;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+.locked-photo img{width:100%;display:block;filter:blur(14px);transform:scale(1.05);}
+.locked-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;text-align:center;gap:6px;}
+.locked-overlay span{font-size:12px;font-weight:400;opacity:0.9;}
+
+/* CTA кнопка в чате */
+.cta-msg{background:#075e54;color:white;align-self:flex-start;border-top-left-radius:0;border-radius:12px;padding:12px 16px;margin-bottom:12px;max-width:85%;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,0.25);cursor:pointer;animation:fadeIn 0.3s ease;}
+.cta-msg:active{opacity:0.85;}
+.cta-msg .cta-title{font-weight:700;font-size:16px;margin-bottom:4px;}
+.cta-msg .cta-sub{font-size:13px;opacity:0.85;}
+
+.input-bar{background:#f0f0f0;padding:8px 10px;display:flex;align-items:center;min-height:60px;border-top:1px solid #ddd;position:relative;z-index:10;}
+.input-wrapper{background:white;flex:1;border-radius:25px;padding:8px 15px;display:flex;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,0.1);}
 input{border:none;flex:1;outline:none;font-size:16px;background:transparent;}
-.send-btn{background:#075e54;color:white;width:45px;height:45px;border-radius:50%;border:none;margin-left:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
-.typing{color:#555;font-size:13px;margin:5px 0 15px 0;display:none;font-style:italic;}
-.locked-photo{position:relative;width:65%;max-width:240px;border-radius:12px;overflow:hidden;margin:10px 0;cursor:pointer;align-self:flex-start;}
-.locked-photo img{width:100%;display:block;filter:blur(12px) brightness(0.7);transform:scale(1.05);}
-.locked-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;text-align:center;}
-.locked-overlay span{font-size:12px;margin-top:6px;font-weight:400;}
-.age-gate{position:absolute;top:0;left:0;width:100%;height:100%;background:#efe7dd;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;z-index:10;}
-.age-gate button{margin-top:15px;background:#075e54;color:white;padding:10px 20px;border:none;border-radius:25px;font-size:16px;}
+.send-btn{background:#075e54;color:white;width:47px;height:47px;border-radius:50%;border:none;margin-left:8px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;}
+
+.age-gate{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(7,94,84,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;z-index:100;color:white;}
+.age-gate h2{margin:0 0 12px;font-size:22px;}
+.age-gate p{color:rgba(255,255,255,0.85);margin-bottom:24px;font-size:15px;line-height:1.5;}
+.age-gate button{background:#25d366;color:white;padding:14px 32px;border:none;border-radius:25px;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 4px 15px rgba(37,211,102,0.4);}
 </style>
 </head>
 <body>
 
+<div class="chat-bg"></div>
+
 <div class="header">
-    <button onclick="history.back()">←</button>
+    <button class="header-back" onclick="history.back()">←</button>
     <div class="user-info">
-        <img src="https://i.imgur.com/rwrGcVF.jpg" class="avatar">
+        <img src="https://i.imgur.com/rwrGcVF.jpg" class="avatar" id="avatarBtn">
         <div>
             <div class="name">Sofía ✨</div>
             <div class="status">en línea ahora</div>
+            <div class="online-timer" id="onlineTimer">disponible por 14 min</div>
         </div>
     </div>
 </div>
 
 <div class="chat-container" id="chat">
-    <div class="typing" id="typingIndicator">Sofía está escribiendo...</div>
+    <div class="typing-bubble" id="typingBubble">
+        <div class="typing-dots"><span></span><span></span><span></span></div>
+    </div>
 </div>
 
 <div class="input-bar">
@@ -58,98 +93,122 @@ input{border:none;flex:1;outline:none;font-size:16px;background:transparent;}
 </div>
 
 <div id="ageGate" class="age-gate">
-    <strong>Solo adultos serios ✨</strong><br>
-    ¿Quieres conocer chicas con las mismas experiencias de vida que tú?<br>
-    <button onclick="startChatGate()">Continuar</button>
+    <h2>Solo adultos ✨</h2>
+    <p>¿Quieres conocer mujeres reales cerca de ti que buscan lo mismo que tú?</p>
+    <button onclick="startChatGate()">Continuar →</button>
 </div>
 
 <script>
-let chatCity="", chatCountry="";
-const sofiaAge=32;
-const startTime=performance.now();
-const chat=document.getElementById('chat');
-const typing=document.getElementById('typingIndicator');
+    const mainOffer = "https://go.cm-trk6.com/aff_c?offer_id=8326&aff_id=70978&url_id=22166&aff_sub5=push&click_id={clickid}";
+    const startTime = performance.now();
+    let chatCity = "", chatCountry = "";
+    const chat = document.getElementById('chat');
+    const typingBubble = document.getElementById('typingBubble');
 
-function randomDelay(min,max){return Math.floor(Math.random()*(max-min)+min);}
-function addMsg(text,isUser=false){
-    const d=new Date();
-    const time=d.getHours()+":"+(d.getMinutes()<10?'0':'')+d.getMinutes();
-    const div=document.createElement('div');
-    div.className=`msg ${isUser?'user':'bot'}`;
-    div.innerHTML=`${text}<div class="time">${time} ${isUser?'<span class="check">✓✓</span>':''}</div>`;
-    chat.insertBefore(div,typing);
-    chat.scrollTop=chat.scrollHeight;
-}
-function botTyping(callback){typing.style.display='block';setTimeout(()=>{typing.style.display='none';callback();},randomDelay(1200,2000));}
-function addLockedPhoto(){
-    const photos=["https://i.imgur.com/rwrGcVF.jpg","https://i.imgur.com/ABC123.jpg","https://i.imgur.com/DEF456.jpg"];
-    const src=photos[Math.floor(Math.random()*photos.length)];
-    const wrapper=document.createElement('div');
-    wrapper.className='locked-photo';
-    wrapper.onclick=goToOffer;
-    wrapper.innerHTML=`<img src="${src}" loading="lazy"><div class="locked-overlay">🔒 Perfil privado<span>Ver fotos completas</span></div>`;
-    chat.insertBefore(wrapper,typing);
-    chat.scrollTop=chat.scrollHeight;
-}
-function locationText(){
-    if(chatCity && chatCountry) return `${chatCity}, ${chatCountry}`;
-    if(chatCity) return chatCity;
-    if(chatCountry) return chatCountry;
-    return "tu área";
-}
+    // Аватарка → оффер
+    document.getElementById('avatarBtn').addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation(); goToOffer();
+    });
 
-function startChat(){
-    document.getElementById('ageGate').style.display='none';
-    const script=[
-        `Hola 👋 vi tu perfil... eres ${locationText()} verdad?`,
-        `Me llamo Sofía, tengo ${sofiaAge} años. No suelo escribir primero pero algo me dio curiosidad 😊`,
-        `Tengo algunas fotos privadas aquí pero no puedo mostrarlas en abierto...`,
-        `Si quieres ver más y seguir hablando conmigo sin límites...`
-    ];
-    let i=0;
-    function next(){
-        if(i<script.length){
-            botTyping(()=>{
-                addMsg(script[i]);
-                if(i===2)setTimeout(addLockedPhoto,800);
-                i++;
-                setTimeout(next,randomDelay(900,1600));
-            });
-        }
+    // Таймер онлайна в хедере (обратный отсчёт от 14 минут)
+    let onlineSecs = 14 * 60;
+    const timerEl = document.getElementById('onlineTimer');
+    const onlineInterval = setInterval(()=>{
+        onlineSecs--;
+        if(onlineSecs <= 0){ clearInterval(onlineInterval); timerEl.textContent = "última vez hace un momento"; return; }
+        const m = Math.floor(onlineSecs/60);
+        const s = onlineSecs%60;
+        timerEl.textContent = `disponible por ${m}:${s<10?'0'+s:s} min`;
+    }, 1000);
+
+    function randomDelay(a,b){ return Math.floor(Math.random()*(b-a)+a); }
+    function getTimeOnPage(){ return Math.floor((performance.now()-startTime)/1000); }
+    function goToOffer(){ window.location.href = mainOffer + "&lp_time=" + getTimeOnPage(); }
+
+    function addMsg(text, isUser=false){
+        const d = new Date();
+        const time = d.getHours()+":"+(d.getMinutes()<10?'0':'')+d.getMinutes();
+        const div = document.createElement('div');
+        div.className = `msg ${isUser?'user':'bot'}`;
+        div.innerHTML = `${text}<div class="time">${time}${isUser?' <span class="check">✓✓</span>':''}</div>`;
+        chat.insertBefore(div, typingBubble);
+        chat.scrollTop = chat.scrollHeight;
     }
-    next();
-}
 
-function sendMsg(){
-    const input=document.getElementById('userInput');
-    const val=input.value.trim();
-    if(!val) return;
-    addMsg(val,true);
-    goToOffer();
-}
+    function addCtaButton(){
+        const div = document.createElement('div');
+        div.className = 'cta-msg';
+        div.onclick = goToOffer;
+        div.innerHTML = `<div class="cta-title">📸 Ver mis fotos y escribirme</div><div class="cta-sub">Registro gratis · tarda 1 minuto</div>`;
+        chat.insertBefore(div, typingBubble);
+        chat.scrollTop = chat.scrollHeight;
+    }
 
-function goToOffer(){
-    const timeSpent=Math.floor((performance.now()-startTime)/1000);
-    const randomId=Math.floor(Math.random()*999999);
-    const offerLink="https://fwziv.bemobtrk.com/click";
-    const geoParams=`country=${chatCountry}${chatCity?`&city=${chatCity}`:""}`;
-    window.location.href=offerLink + "?" + geoParams + "&s1=" + timeSpent + "&rnd=" + randomId + "&var=ec_cpa_v1";
-}
+    function showTyping(cb){
+        typingBubble.style.display='block';
+        chat.scrollTop = chat.scrollHeight;
+        setTimeout(()=>{ typingBubble.style.display='none'; cb(); chat.scrollTop=chat.scrollHeight; }, randomDelay(1200,2200));
+    }
 
-function startChatGate(){
-    const params=new URLSearchParams(window.location.search);
-    chatCity=params.get('city')||"";
-    chatCountry=params.get('country')||"";
-    if(!chatCountry){
-        fetch('https://ipapi.co/json/')
-            .then(res=>res.json())
-            .then(data=>{chatCountry=data.country_name||"Ecuador"; chatCity=data.city||"";})
-            .catch(()=>{chatCountry="Ecuador"; chatCity="";})
-            .finally(()=>startChat());
-    } else startChat();
-}
+    function addLockedPhoto(){
+        const w = document.createElement('div');
+        w.className = 'locked-photo'; w.onclick = goToOffer;
+        w.innerHTML = `<img src="https://i.imgur.com/rwrGcVF.jpg"><div class="locked-overlay">🔒 Foto privada<span>Toca para ver</span></div>`;
+        chat.insertBefore(w, typingBubble);
+        chat.scrollTop = chat.scrollHeight;
+    }
 
-window.onload=()=>{document.getElementById('userInput').focus();}
+    function locationText(){ return chatCity || "tu ciudad"; }
+
+    function startChat(){
+        document.getElementById('ageGate').style.display='none';
+
+        // Скрипт чата — локализованный под EC, возраст 36
+        const script = [
+            `Hola 👋 vi tu perfil aquí en la app... ¿eres de ${locationText()}?`,
+            `Qué bueno 😊 Yo también soy de por acá. Me llamo Sofía, tengo 36 años`,
+            `Llevo un tiempo sola y quiero conocer a alguien serio... no es fácil a nuestra edad, ¿verdad?`,
+            `Tengo fotos aquí pero están bloqueadas, solo las puedo compartir dentro de la app 🔒`,
+            `Si quieres seguir hablando y ver mis fotos, regístrate gratis — solo tarda un minuto 😊`
+        ];
+
+        let i = 0;
+        function next(){
+            if(i < script.length){
+                showTyping(()=>{
+                    addMsg(script[i]);
+                    if(i === 3) setTimeout(addLockedPhoto, 700);
+                    if(i === 4) setTimeout(addCtaButton, 500);
+                    i++;
+                    if(i < script.length) setTimeout(next, randomDelay(900,1600));
+                });
+            }
+        }
+        setTimeout(next, 600);
+    }
+
+    function sendMsg(){
+        const input = document.getElementById('userInput');
+        const val = input.value.trim();
+        if(!val) return;
+        input.value = '';
+        addMsg(val, true);
+        setTimeout(goToOffer, 400);
+    }
+
+    function startChatGate(){
+        const p = new URLSearchParams(window.location.search);
+        chatCity = p.get('city') || "";
+        chatCountry = p.get('country') || "";
+        if(!chatCity){
+            fetch('https://ip-api.com/json/?fields=countryCode,city')
+                .then(r=>r.json())
+                .then(d=>{ chatCity=d.city||""; chatCountry=d.countryCode||""; })
+                .catch(()=>{})
+                .finally(()=>startChat());
+        } else startChat();
+    }
+    // НЕТ back button redirect — пользователи уходят свободно (нужно для CPA Goal)
 </script>
 </body>
 </html>
