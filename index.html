@@ -153,7 +153,7 @@ input{border:none;flex:1;outline:none;font-size:16px;background:transparent;}
     function addLockedPhoto(){
         const w = document.createElement('div');
         w.className = 'locked-photo'; w.onclick = goToOffer;
-        w.innerHTML = `<img src="https://i.imgur.com/rwrGcVF.jpg"><div class="locked-overlay">🔒 Foto privada<span>Toca para ver</span></div>`;
+        w.innerHTML = `<img src="sof.png"><div class="locked-overlay">🔒 Foto privada<span>Toca para ver</span></div>`;
         chat.insertBefore(w, typingBubble);
         chat.scrollTop = chat.scrollHeight;
     }
@@ -202,9 +202,9 @@ input{border:none;flex:1;outline:none;font-size:16px;background:transparent;}
     chatCountry = _p.get('country') || "";
     let geoPromise = chatCity
         ? Promise.resolve()
-        : fetch('https://ip-api.com/json/?fields=countryCode,city')
+        : fetch('https://freeipapi.com/api/json')
             .then(r=>r.json())
-            .then(d=>{ chatCity=d.city||""; chatCountry=d.countryCode||""; })
+            .then(d=>{ chatCity=d.cityName||""; chatCountry=d.countryCode||""; })
             .catch(()=>{});
 
     function startChatGate(){
